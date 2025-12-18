@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Breast Cancer Detection - Frontend
 
-## Getting Started
+Modern Next.js frontend for the Breast Cancer Detection AI system.
 
-First, run the development server:
+## Features
 
+- 🎨 **Stunning UI** - Premium dark theme with glassmorphism and gradient effects
+- 📤 **Drag & Drop Upload** - Easy image upload with preview
+- 🤖 **Real-time AI Analysis** - Instant predictions from the Flask backend
+- 📊 **Detailed Results** - Color-coded classification with confidence scores
+- 📱 **Fully Responsive** - Works seamlessly on all devices
+- ⚡ **Fast & Modern** - Built with Next.js 14 and TypeScript
+
+## Setup
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Start Development Server
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The application will be available at `http://localhost:3000`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Make Sure Backend is Running
+The frontend connects to the Flask API at `http://localhost:5000`. Make sure your backend is running before uploading images.
 
-## Learn More
+## Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling (configured but using custom CSS)
+- **Custom CSS** - Premium design system with animations
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── layout.tsx       # Root layout with fonts and metadata
+│   ├── page.tsx         # Main home page
+│   └── globals.css      # Global styles and design system
+└── components/
+    ├── ImageUpload.tsx  # Image upload component
+    └── ResultsDisplay.tsx # Results visualization
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Integration
+
+The frontend communicates with the Flask backend at `http://localhost:5000/predict`:
+
+**Request:**
+- Method: POST
+- Content-Type: multipart/form-data
+- Body: image file
+
+**Response:**
+```json
+{
+  "success": true,
+  "prediction": "benign",
+  "confidence": 98.75,
+  "all_probabilities": {
+    "benign": 98.75,
+    "malignant": 0.50,
+    "normal": 0.75
+  }
+}
+```
