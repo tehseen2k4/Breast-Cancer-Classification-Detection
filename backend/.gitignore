@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+
+# Uploads
+uploads/
+temp_image.png
+
+# Model files (if you want to keep them out of git due to size)
+# *.h5
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
